@@ -1,33 +1,25 @@
 module.exports = {
   siteMetadata: {
-    title: `Novela by Narative`,
-    name: `Narative`,
-    siteUrl: `https://novela.narative.co`,
-    description: `This is my description that will be used in the meta tags and important for search results`,
+    title: `Dev Blog`,
+    name: `DevBlog`,
+    siteUrl: `https://changethisasap.com`,
+    description: `A dev site where I'm keeping all my blog posts about code.`,
     hero: {
-      heading: `Welcome to Novela, the simplest way to start publishing with Gatsby.`,
+      heading: `Welcome to Dev Blog, a blog about dev stuff.`,
       maxWidth: 652,
     },
     social: [
       {
         name: `twitter`,
-        url: `https://twitter.com/narative`,
+        url: `https://twitter.com/kyrelldixon`,
       },
       {
         name: `github`,
-        url: `https://github.com/narative`,
+        url: `https://github.com/kyrelldixon`,
       },
       {
         name: `instagram`,
-        url: `https://instagram.com/narative.co`,
-      },
-      {
-        name: `linkedin`,
-        url: `https://www.linkedin.com/company/narative/`,
-      },
-      {
-        name: `dribbble`,
-        url: `https://dribbble.com/narativestudio`,
+        url: `https://instagram.com/kyrell.dixon`,
       },
     ],
   },
@@ -48,8 +40,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Novela by Narative`,
-        short_name: `Novela`,
+        name: `Dev Blog`,
+        short_name: `DevBlog`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
