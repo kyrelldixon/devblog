@@ -1,12 +1,9 @@
 - name: Kyrell Dixon
   bio: |
-    Written by You. This is where your author bio lives. Share your work, your
-    joys and of course, your Twitter handle.
+    Full-stack developer. Udemy instructor. Consultant. Mentor. Currently accepting client work and students.
   avatar: ./avatars/kyrell-dixon.jpeg
   social:
-    - url: https://unsplash.com
-    - url: https://stackoverflow.com
-    - url: https://github.com
-    - url: https://github.com
-    - url: https://github.com
+    - url: https://twitter.com/kyrelldixon
+    - url: https://instagram.com/kyrell.dixon
+    - url: https://github.com/kyrelldixon
   featured: true
