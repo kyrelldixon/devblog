@@ -6,6 +6,7 @@
   "scripts": {
     "start": "yarn dev",
     "build": "gatsby build",
+    "serve": "gatsby serve",
     "dev": "gatsby develop",
     "clean": "gatsby clean"
   },
