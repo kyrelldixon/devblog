@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: `Dev Blog`,
-    name: `DevBlog`,
-    siteUrl: `https://changethisasap.com`,
-    description: `A dev site where I'm keeping all my blog posts about code.`,
+    title: `Student Dev Coach`,
+    name: `Student Dev Coach`,
+    siteUrl: `https://studentdevcoach.com`,
+    description: `Student Dev Coach, a site focused on teaching bootcamp and college developers.`,
     hero: {
-      heading: `Welcome to Dev Blog, a blog about dev stuff.`,
-      maxWidth: 652,
+      heading: `Student Dev Coach, a site focused on teaching bootcamp and college developers.`,
+      maxWidth: 800,
     },
     social: [
       {
@@ -40,8 +40,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Dev Blog`,
-        short_name: `DevBlog`,
+        name: `Student Dev Coach`,
+        short_name: `StudentDevCoach`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#fff`,
