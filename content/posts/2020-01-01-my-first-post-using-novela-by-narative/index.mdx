@@ -4,7 +4,7 @@ author: Kyrell Dixon
 date: 2019-04-30
 hero: ./images/hero.jpg
 excerpt: With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of this incredible tool.
-secret: true
+secret: false
 ---
 
 My first post using `@narative/gatsby-theme-novela`. Novela is built by the team at [Narative](https://narative.co), and built for everyone that loves the web.
@@ -95,6 +95,15 @@ No language indicated, so no syntax highlighting.
 But let's throw in a <b>tag</b>.
 ```
 
+### React Live
+
+```js live
+const onClick = () => {
+  alert("You opened me");
+};
+render(<button onClick={onClick}>Click to Open</button>);
+```
+
 ### JSX
 
 ```jsx
@@ -105,6 +114,47 @@ import theme from "./theme";
 export default props => (
   <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
 );
+```
+
+### Code Block with Line Highlighting
+
+```jsx {5-7,10}
+import React from "react";
+
+const Post = ({ data: { post } }) => (
+  <Layout>
+    <Heading variant="h2" as="h2">
+      {post.title}
+    </Heading>
+    <p
+      sx={{
+        color: `secondary`,
+        mt: 3,
+        a: { color: `secondary` },
+        fontSize: [1, 1, 2]
+      }}
+    >
+      <span>{post.date}</span>
+      {post.tags && (
+        <React.Fragment>
+          {` — `}
+          <ItemTags tags={post.tags} />
+        </React.Fragment>
+      )}
+    </p>
+    <section
+      sx={{
+        ...CodeStyles,
+        my: 5,
+        ".gatsby-resp-image-wrapper": { my: 5, boxShadow: `lg` }
+      }}
+    >
+      <MDXRenderer>{post.body}</MDXRenderer>
+    </section>
+  </Layout>
+);
+
+export default Post;
 ```
 
 ## Blockquotes
