@@ -1,0 +1,101 @@
+---
+title: What are the differences between backend and frontend development?
+author: Kyrell Dixon
+date: 2020-01-13
+# hero: ./images/hero.jpg
+slug: backend-vs-frontend
+secret: true
+---
+
+So after scrolling through the [r/webdev](https://www.reddit.com/r/webdev/) subreddit, I found a [post](https://www.reddit.com/r/webdev/comments/enq1jr/explain_the_web_stack_in_lamens_terms_to_a_low/fe3jska/) with someone asking this question:
+
+> So when do i need a separate backend and frontend?
+> I would like to build a webapp with login, registration, user settings, database usage.
+
+This is a common question asked by newer developers, so I want to give my take on it with a specific example based on this question.
+
+So let's say you're tasked with building a web app like Instagram that allows users to make accounts and upload pictures.
+For an app like this, some of the basic features will include:
+
+* Registration
+* Login/Logout
+* Uploading images
+* Viewing images based on users
+* Saving a description with an image
+* Saving comments and likes for a specific image, etc.
+
+So which of these features belong to the **frontend** and which belong to the **backend**? The answer is **they all belong to both**.
+
+**Image of confused person**
+
+How could they belong to both? I'll use account registration as an example to explain this.
+When a user first registers for an account, the user goes to a form that asks for an email or username and a password.
+If all goes well, you enter your email, type in the same password you use for every site (please don't do this), press "submit", and a few seconds later you have a new account.
+
+The code that handles everything you can see is the frontend.
+The registration page, the form input fields, and the submit button are all frontend. The specific elements are created with HTML.
+If you want users to actually register, you probably have some styles to make the page look nice and both their phone and computer. That's what you use CSS to control.
+From there, you have to take the form input, in this case the email and password, and use it to create and account. That's where JavaScript comes in.
+
+You will also use JavaScript to validate the input to make sure the "email" is actually an email and the password is at least somewhat secure. Since you're interacting
+with the user input, you will use JavaScript for that as well.
+
+**Disclaimer**: You can also do some simple validation purely from the HTML, but 99% of the logic will be handled by JavaScript.
+
+So far all you've created is HTML, CSS, and JavaScript. This is purely the frontend part of the application. So where does the backend come in?
+
+The backend comes into play both *before* you get to the website and *after* you submit the form.
+
+## Before visiting a website
+
+Let's take a step back. Before you can ever go to a website and see a form, you have to write the code that makes the website. The same code, once completed, has to be
+**deployed** to a server. All that means is the code goes from a folder on your local computer to a folder on a different computer. The server is the other computer.
+
+There are several ways to deploy code now that don't require you to interact with the server directly like Netlify, Github Pages, Amazon S3, and now.sh, but that code is still on a
+server being managed. That server has to be set up to allow users to get the code from the server to display in the browser whenever a user types in the url. The backend
+is where all the server setup takes place.
+
+So in short, before the user can view your site, the frontend code is first stored on a server. When a user goes to a specific domain, the browser downloads the HTML, CSS, and JavaScript from that
+server and uses it to display the site. In this case the user will now see a registration page.
+
+## After submitting the register form - on the backend
+
+Now we're back to when the user types in an email and password. When the user submits the account info, it has to be sent somewhere so that a new account can be created.
+That data is sent to the backend.
+
+When most developers refer to the backend, they are referring to everything that lives *exclusively* on the server. This will include:
+
+* The application: Code responsible for all server logic
+* The database: System for storing data 
+* The file system: Where images and other assets are stored
+
+I say exclusively here because the frontend code is also stored on a server. However, its main purpose is to be displayed by a browser so it won't run on the server.
+
+In the example, once the account data reaches the server, it will be processed by the application.
+
+The application can be written in JavaScript like in the frontend, but it can also be a wide variety of other languages
+like Python, Go, Java, or Ruby to name some of the most popular. This code is what connects all the various parts of the backend together. Connecting it all can get very
+complex, so each language has frameworks and tools to make backend development easier. Here are some common frameworks for each language:
+
+* JavaScript -> Express or Hapi
+* Python -> Django or Flask
+* Java -> Spring
+* Ruby -> Ruby on Rails
+
+For this example let's assume the application is built with Express.js and JavaScript. After the account data is sent from the frontend, the application will process it
+and decide where it should go. In this case there is just an email and password, so it will get saved to the database.
+
+How data gets saved depends on the type of database used. There are many different languages and tools for working with the database, but the main database types are:
+
+* SQL
+* NoSQL
+
+Once the data is saved to the database, it can then later be retreived when the user attempts to login.
+
+## After submitting the register form - on the frontend
+
+Once the form has been submitted, the backend is in control of the data and the frontend has to decide what to do while it waits.
+This is where you might create a loading spinner while the frontend part of the app is waiting to hear back from the server.
+
+If everything works out well, then users can login with the new account! If not...it's back to the server code to fix some bugs.
+
