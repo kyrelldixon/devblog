@@ -1,6 +1,6 @@
 // Code modified from https://github.com/narative/narative.co/blob/master/src/sections/contact/Contact.ContactForm.tsx
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
 import { Formik, Form as FormikForm, Field } from "formik";
@@ -42,8 +42,12 @@ const initialValues = {
 }
 
 const ContactForm = () => {
-  const animation = 'start'
   const baseDelay = 0
+  const [animation, setAnimation] = useState('')
+
+  useEffect(() => {
+    setAnimation('start')
+  }, [animation])
 
   const newLine = (count) => {
     const lineBreak = '%0D%0A';
@@ -90,7 +94,10 @@ const ContactForm = () => {
               />
             </span>
           </FormSection>
-          <FormSection>
+          <FormSection
+            animation={animation}
+            delay={baseDelay + 610}
+          >
             <FormHeader>Your Project Details</FormHeader>
             <Field
               component={Form.TextArea}
@@ -99,7 +106,7 @@ const ContactForm = () => {
               rows={1}
             />
           </FormSection>
-          <ButtonContainer animation={animation} delay={baseDelay + 610}>
+          <ButtonContainer animation={animation} delay={baseDelay + 800}>
             <ButtonArrow
               isSubmitting={isSubmitting}
               color="black"
@@ -109,7 +116,7 @@ const ContactForm = () => {
           </ButtonContainer>
           <MobileButtonContainer
             animation={animation}
-            delay={baseDelay + 610}
+            delay={baseDelay + 800}
           >
             <Button
               isSubmitting={isSubmitting}
