@@ -12,9 +12,9 @@ const NavItems = ({ navLinks }) => (
           <NavAnchor 
             to={nav.to}
             data-a11y="false"
-            getProps={({ isPartiallyCurrent }) => (
+            getProps={({ isCurrent }) => (
               // eslint-disable-next-line
-              isPartiallyCurrent ? { ['data-active']: 'true' } : null
+              isCurrent ? { ['data-active']: 'true' } : null
             )}
           >
             {nav.text}

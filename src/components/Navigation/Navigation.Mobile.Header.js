@@ -40,9 +40,9 @@ const NavigationMobile = ({ active, navLinks }) => {
             key={link.to}
             index={index}
             to={link.to}
-            getProps={({ isPartiallyCurrent }) =>
+            getProps={({ isCurrent }) =>
               // eslint-disable-next-line
-              isPartiallyCurrent ? { ['data-active']: 'true' } : null
+              isCurrent ? { ['data-active']: 'true' } : null
             }
           >
             {link.text}
