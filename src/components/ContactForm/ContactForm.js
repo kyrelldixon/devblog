@@ -45,12 +45,23 @@ const ContactForm = () => {
   const animation = 'start'
   const baseDelay = 0
 
+  const newLine = (count) => {
+    const lineBreak = '%0D%0A';
+    return lineBreak.repeat(count)
+  }
+  const sendMail = (values) => {
+    const { name, details } = values;
+    const myEmail = 'kyrell@studentdevcoach.com';
+    const subject = `I'd like to work with you - ${name}`;
+    const body = `Hi Kyrell,${newLine(2)}${details}`;
+    const formattedBody = body.replace('\n', newLine(1))
+
+    window.location.href = `mailto:${myEmail}?subject=${subject}&body=${formattedBody}`;
+  };
+
   const handleSubmit = (values, { setSubmitting }) => {
-    console.log(values)
-    setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 400);
+    sendMail(values);
+    setSubmitting(false);
   }
 
   return (
@@ -132,11 +143,11 @@ const StyledFormikForm = styled(FormikForm)`
   `};
 `;
 
-const fadeUpAnimation = css`
-  transition: opacity 0.5s linear ${p => p.delay}ms,
-    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.9) ${p => p.delay}ms;
-  opacity: ${p => (p.animation ? 1 : 0)};
-  transform: ${p => (p.animation ? 'translateY(0)' : 'translateY(20px)')};
+const fadeUpAnimation = p => css`
+  transition: opacity 0.5s linear ${p.delay}ms,
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.9) ${p.delay}ms;
+  opacity: ${(p.animation ? 1 : 0)};
+  transform: ${(p.animation ? 'translateY(0)' : 'translateY(20px)')};
 `
 
 const FormHeader = styled(Heading.h2)`

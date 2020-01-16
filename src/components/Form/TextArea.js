@@ -171,6 +171,7 @@ const StyledInput = styled.textarea`
   height: 4.8rem;
   border: none;
   background: transparent;
+  white-space: pre-wrap;
   color: ${p => p.theme.colors.grey};
   -webkit-text-fill-color: ${p => p.theme.colors.grey};
   resize: none;
