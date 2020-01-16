@@ -1,16 +1,16 @@
 ---
 title: Where is the line between backend and frontend development?
 author: Kyrell Dixon
-date: 2020-01-13
+date: 2020-01-16
 hero: ./images/hero.jpg
-slug: backend-vs-frontend
+slug: backend-vs-frontend-by-example
 secret: false
 ---
 
 So after scrolling through the [r/webdev](https://www.reddit.com/r/webdev/) subreddit, I found a [post](https://www.reddit.com/r/webdev/comments/enq1jr/explain_the_web_stack_in_lamens_terms_to_a_low/fe3jska/) with someone asking this question:
 
-> So when do i need a separate backend and frontend?
-> I would like to build a webapp with login, registration, user settings, database usage.
+> So when do [I] need a separate backend and frontend?
+> I would like to build a [web app] with login, registration, user settings, database usage.
 
 This is a common question asked by newer developers, so I want to give my take on it with a specific example based on this question.
 
@@ -22,21 +22,25 @@ For an app like this, some of the basic features will include:
 * Uploading images
 * Viewing images based on users
 * Saving a description with an image
-* Saving comments and likes for a specific image, etc.
+* Saving comments and likes for a specific post, etc.
 
 So which of these features belong to the **frontend** and which belong to the **backend**? The answer is **they all belong to both**.
 
 <div className="Image__Small">
-  <img
-    src="./images/confused-guy.jpg"
-    title="Confused guy"
-    alt="Confused guy in black suit banging with his head on a well"
-  />
+ <img
+ src="./images/confused-guy.jpg"
+ title="Confused guy"
+ alt="Confused guy in black suit banging with his head on a well"
+ />
 </div>
 
 <figcaption style="margin: -30px 0 40px">How you probably feel now. Photo by Bruno Martins on Unsplash</figcaption>
 
-Let's use account registration as an example to explain this.
+Throughout this post, I will use the account registration feature as an example to explain the separation between backend and frontend.
+I will also go into detail on how they work together.
+
+## Registration on the frontend
+
 When a user first registers for an account, the user goes to a form that asks for an email and a password.
 If all goes well, the user enters an email, types in the same password they use for every other site (please don't do this), and presses "submit".
 
@@ -60,7 +64,7 @@ The **backend** stores the frontend code so that browsers can request it based o
 So in this example, let's say the register page is found at `yoursite.com/register`. When a user navigates to the `/register` route, 
 the **backend** will send the register page to the browser. From there, the browser executes the HTML, CSS, and JavaScript and displays the page.
 
-Afterwards, the frontend completely takes over and the user can register for an account.
+Afterward, the frontend completely takes over and the user can register for an account.
 
 ### Routing with JavaScript can get complicated
 
@@ -70,13 +74,13 @@ In the simplest case, the backend may simply send down the HTML, CSS, and JavaSc
 However, when using tools like React or Vue.js, the routing process can get much more complicated.
 
 Part of the complexity in writing backend logic comes from making sure
-that the correct page shows up with the data it needs based on a specific route.
+that the correct page shows up with the data it needs for a specific route.
 
 The details are outside of the scope of this blog, but the important thing to know
 is that there are several categories of tools that help manage routing problems. The main categories are:
 
 * Static Site Generators (SSGs) -> Gatsby and Hugo
-* Server Side Rendering (aka Universal/Isomorpic Rendering) tools -> Next and Nuxt
+* Server-Side Rendering (aka Universal/Isomorphic Rendering) tools -> Next and Nuxt
 * Templating Engines -> pug (Jade), Handlebars, and EJS
 
 I only mentioned a few specific tools, but there is a huge variety of tools to choose from.
@@ -89,14 +93,14 @@ There are pros and cons to each, but they can all be used to accomplish the same
 
 Reach out to me on Twitter or shoot me an email if there is a specific tool you'd like me to get deeper into.
 
-So in short, before the user can view the site, the frontend code is first stored on a server. When a user goes to a specific url, the server decides what frontend code to send
+So in short, before the user can view the site, the frontend code is first stored on a server. When a user goes to a specific URL, the server decides what frontend code to send
 to the browser so it can display the site.
 
 After the browser pulls up the site, the frontend code takes over. Now we're back to the point where the user submits the form.
 
-## After submitting the register form - on the backend
+## After submitting the registration form - on the backend
 
-When the user submits the register form, the email and password is sent to the backend. But what *is* the backend?
+When the user submits the register form, the email and password are sent to the backend. But what *is* the backend?
 
 When most developers refer to the backend, they are referring to everything that lives *exclusively* on the server. This will include:
 
@@ -105,18 +109,25 @@ When most developers refer to the backend, they are referring to everything that
 * The server: The computer where assets (images, videos, etc.), the database, and the application are stored
 
 I say exclusively here because the frontend code is also stored on a server.
-However, the frontend code only runs in the browser so it is considered seperate from the backend.
+However, the frontend code only runs in the browser so it is considered separate from the backend.
 
 In the example, the application will be what processes the user account info. The account data will be sent to a specific route and that route will handle validating
-the data, saving it to the database, and sending a response to communicate whether the data is processed successfully or if there is an error.
+the data, saving it to the database, and sending a response to communicate whether the data is processed successfully or not.
 
 Processing data, storing values in a database, and sending a response will take some variable amount of time on the backend.
-During this process, the frontend has to seperately determine what to do while it waits.
+During this process, the frontend has to separately determine what to do while it waits.
 
-## After submitting the register form - on the frontend
+## After submitting the registration form - on the frontend
 
 Once the form has been submitted, the frontend is in a "waiting" state until the backend server responds.
-Usually developers will create some type of loading state to handle this transition.
+Usually, developers will create some type of loading state to handle this transition.
 
-If everything works out well, then users can login with the new account! If not...it's back to the server code to fix some bugs.
+If everything works out well, then users can log in with the new account! If not...it's back to the server code to fix some bugs.
+
+## What's next
+
+This post should give you a high-level understanding of what goes into developing account registration on both the backend and frontend.
+But what about the other features like login, uploading images, and leaving likes and comments on an image?
+
+Send me an email or message on Twitter if you'd like to see another post or example breaking down each feature!
 
