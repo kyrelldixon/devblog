@@ -23,7 +23,6 @@ class Text extends Component {
 
   render() {
     const { autoFocus, field, label, ...rest } = this.props
-    console.log({...rest})
 
     const hasError =
       this.props.form.touched[field.name] && this.props.form.errors[field.name]
