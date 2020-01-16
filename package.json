@@ -8,7 +8,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "stage": "yarn clean; yarn build; yarn serve",
-    "dev": "gatsby develop",
+    "dev": "gatsby develop -H 0.0.0.0",
     "clean": "gatsby clean"
   },
   "dependencies": {
