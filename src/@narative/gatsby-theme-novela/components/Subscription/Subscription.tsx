@@ -11,10 +11,12 @@ const Subscription: React.FC<{}> = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    setLoading(true)
     addToMailchimp(email)
       .then(data => {
         if (data.result === "error") {
@@ -36,7 +38,8 @@ const Subscription: React.FC<{}> = () => {
           return;
         }
         setError(error.msg);
-      });
+      })
+      .finally(() => setLoading(false));
   }
 
   function handleEmailChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -69,9 +72,9 @@ const Subscription: React.FC<{}> = () => {
               type="submit"
               hasError={error}
               subscribed={subscribed}
-              disabled={subscribed}
+              disabled={subscribed || loading}
             >
-              {subscribed ? <CheckMarkIcon /> : "Subscribe"}
+              {subscribed ? <CheckMarkIcon /> : loading ? "Submitting" : "Subscribe"}
             </Button>
             {error && <Error dangerouslySetInnerHTML={{ __html: error }} />}
           </Form>
