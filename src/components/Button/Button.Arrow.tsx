@@ -3,6 +3,7 @@
 import React, { ReactNode } from "react";
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/core";
+import { useColorMode } from "theme-ui";
 
 import media from "@narative/gatsby-theme-novela/src/styles/media";
 
@@ -30,25 +31,31 @@ export default ({
   text,
   color = 'white',
   isSubmitting,
-}: ButtonArrowProps) => (
-  <ArrowButton
-    as={as}
-    to={to}
-    onClick={onClick}
-    color={color}
-    role="button"
-    data-a11y="false"
-  >
-    {isSubmitting ? (
-      <Spinner />
-    ) : (
-      <ArrowAnimation color={color}>
-        {text}
-        <ArrowRightIcon aria-hidden="true" fill={color} />
-      </ArrowAnimation>
-    )}
-  </ArrowButton>
-)
+}: ButtonArrowProps) => {
+  const [colorMode] = useColorMode()
+  const isDark = colorMode === `dark`;
+  const fill = isDark ? "#fff" : "#000";
+
+  return (
+    <ArrowButton
+      as={as}
+      to={to}
+      onClick={onClick}
+      color={fill || color}
+      role="button"
+      data-a11y="false"
+    >
+      {isSubmitting ? (
+        <Spinner />
+      ) : (
+        <ArrowAnimation color={fill || color}>
+          {text}
+          <ArrowRightIcon aria-hidden="true" fill={fill} />
+        </ArrowAnimation>
+      )}
+    </ArrowButton>
+  )
+}
 
 const ArrowButton = styled.button`
   position: relative;
