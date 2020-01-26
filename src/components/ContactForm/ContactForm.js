@@ -158,7 +158,7 @@ const fadeUpAnimation = p => css`
 `
 
 const FormHeader = styled(Heading.h2)`
-  color: #000;
+  color: ${p => p.theme.colors.primary};
   width: 265px;
   padding-right: ${p => (p.morePadding ? '100px' : '76px')};
   ${mediaqueries.tablet`

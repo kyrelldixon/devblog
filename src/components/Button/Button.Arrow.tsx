@@ -56,7 +56,7 @@ const ArrowButton = styled.button`
   flex-direction: row;
   font-size: 16px;
   font-weight: 600;
-  color: ${p => p.color};
+  color: ${p => p.theme.colors.primary};
   background: transparent;
   height: 25px;
   max-width: 202px;

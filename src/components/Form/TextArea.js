@@ -92,7 +92,7 @@ const InputBorder = styled.div`
   ${p =>
     p.hasError
       ? `border-bottom: 1px solid ${p.theme.colors.error}`
-      : `border-bottom: 1px solid #b9bbbe`};
+      : `border-bottom: 1px solid ${p => p.theme.colors.primary};`};
     `};
 `
 
@@ -115,13 +115,13 @@ const InputBorderActive = styled.div`
 const StyledLabel = styled.label`
   display: block;
   font-size: 3.2rem;
-  color: ${p => (p.hasError ? p.theme.colors.error : 'rgba(0,0,0,0.33)')};
+  color: ${p => (p.hasError ? p.theme.colors.error : p.theme.colors.primary)};
   border: none;
   pointer-events: none;
   ${mediaqueries.tablet`
     font-size: 1.6rem;
     font-weight: 400;
-    color: ${p => (p.hasError ? p.theme.colors.error : 'rgba(0,0,0,0.33)')};
+    color: ${p => (p.hasError ? p.theme.colors.error : p.theme.colors.primary)};
   `};
 `
 
@@ -143,7 +143,7 @@ const LabelAnimation = styled.span`
     p.hasValue &&
     `
     label {
-      color: #000;
+      color: ${p => p.theme.colors.primary};
     }
     font-weight: 500;
     width: 133.3333333%;
@@ -172,14 +172,14 @@ const StyledInput = styled.textarea`
   border: none;
   background: transparent;
   white-space: pre-wrap;
-  color: ${p => p.theme.colors.grey};
-  -webkit-text-fill-color: ${p => p.theme.colors.grey};
+  color: ${p => p.theme.colors.primary};
+  -webkit-text-fill-color: ${p => p.theme.colors.primary};
   resize: none;
   ${mediaqueries.tablet`
     font-size: 1.6rem;
     height: 1.8rem;
     font-weight: 400;
-    color: #000;
+    color: ${p => p.theme.colors.primary};
   `};
   &:active,
   &:focus {
@@ -187,7 +187,7 @@ const StyledInput = styled.textarea`
   }
   &[value]:not([value='']) ~ ${LabelAnimation} {
     label {
-      color: #000;
+      color: ${p => p.theme.colors.primary};
     }
     font-weight: 500;
     width: 133.3333333%;
@@ -201,7 +201,7 @@ const StyledInput = styled.textarea`
   }
   &:active ~ ${LabelAnimation}, &:focus ~ ${LabelAnimation} {
     label {
-      color: #000;
+      color: ${p => p.theme.colors.primary};
     }
     font-weight: 500;
     width: 133.3333333%;

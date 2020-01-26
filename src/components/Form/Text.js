@@ -111,13 +111,13 @@ const InputBorderActive = styled.div`
 const StyledLabel = styled.label`
   display: block;
   font-size: 3.2rem;
-  color: ${p => (p.hasError ? p.theme.colors.error : 'rgba(0,0,0,0.35)')};
+  color: ${p => (p.hasError ? p.theme.colors.error : p.theme.colors.primary)};
   border: none;
   pointer-events: none;
   ${mediaqueries.tablet`
     font-size: 1.6rem;
     font-weight: 400;
-    color: ${p => (p.hasError ? p.theme.colors.error : 'rgba(0,0,0,0.35)')};
+    color: ${p => (p.hasError ? p.theme.colors.error : p.theme.colors.primary)};
   `};
 `
 
@@ -141,7 +141,7 @@ const LabelAnimation = styled.span`
   ${p =>
     p.hasValue &&
     `
-    label { color: #000; }
+    label { color: ${p => p.theme.colors.primary}; }
     font-weight: 500;
     width: 133.3333333%;
     transform: translateY(-1em) scale(0.45) perspective(100px)
@@ -164,19 +164,19 @@ const StyledInput = styled.input`
   height: 4.8rem;
   border: none;
   background: transparent;
-  color: ${p => p.theme.colors.grey};
-  -webkit-text-fill-color: ${p => p.theme.colors.grey};
+  color: ${p => p.theme.colors.primary};
+  -webkit-text-fill-color: ${p => p.theme.colors.primary};
   ${mediaqueries.tablet`
     font-size: 1.6rem;
     height: 1.8rem;
     font-weight: 400;
-    color: #000;
+    color: ${p => p.theme.colors.primary};
   `};
   ${p =>
     p.allowFocus &&
     `
     &:active ~ ${LabelAnimation}, &:focus ~ ${LabelAnimation} {
-      label { color: #000; }
+      label { ${p => p.theme.colors.primary}; }
       font-weight: 500;
       width: 133.3333333%;
       transform: translateY(-1em) scale(0.45) perspective(100px)
